@@ -9,13 +9,14 @@ import pandas as pd
 from scipy import stats
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import pandas_profiling
 
 # In[2]:
 
 
 dataset=pd.read_csv('data.csv')
-
+profile=dataset.drop("Unnamed_0",axis=1).profile_report(title='EDA of Training Data')
+profile.to_file(output_file="eda_data_train.html")
 
 # In[3]:
 
@@ -322,5 +323,5 @@ res= pd.concat([o, w], axis=1)
 # In[44]:
 
 
-res.to_csv('shivam_basia_092598_doc_3.csv',encoding='utf-8', index=False)
+res.to_csv('output.csv',encoding='utf-8', index=False)
 
